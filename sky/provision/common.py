@@ -59,6 +59,10 @@ class ProvisionConfig:
     node_config: Dict[str, Any]
     # Number of instances to start.
     count: int
+    # Number of warm (spare) instances to create alongside active instances.
+    # Warm instances run setup but do not start Ray workers. They are used
+    # for fast recovery when an active node fails. K8s-only for now.
+    warm_nodes: int = 0
     # Tags for the instances.
     tags: Dict[str, str]
     # Whether or not to resume stopped instances.
